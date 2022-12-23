@@ -1,23 +1,23 @@
 class NodeC {
-  value;
-  next;
+  value: number;
+  next: NodeC | null;
 
-  constructor(value, next = null) {
+  constructor(value: number, next: NodeC | null = null) {
     this.value = value;
     this.next = next;
   }
 }
 
 class LinkedList {
-  head;
-  tail;
+  head: NodeC | null;
+  tail: NodeC | null;
 
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
-  append(value) {
+  append(value: number) {
     const newNode = new NodeC(value);
 
     if (!this.head) {
@@ -31,7 +31,7 @@ class LinkedList {
     this.tail = newNode;
   }
 
-  traverse(callback) {
+  traverse(callback: (node: NodeC) => void) {
     let currentNode = this.head;
 
     while (currentNode !== null) {
@@ -41,10 +41,9 @@ class LinkedList {
   }
 }
 
-const printNode = (node) => {
+const printNode = (node: NodeC) => {
   console.log(
-    `Node value: ${node.value}, next node: ${
-      node.next ? node.next.value : null
+    `Node value: ${node.value}, next node: ${node.next ? node.next.value : null
     }`
   );
 };

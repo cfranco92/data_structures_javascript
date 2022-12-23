@@ -1,9 +1,13 @@
 class DoubleNodeC {
-  value;
-  prev;
-  next;
+  value: number;
+  prev: DoubleNodeC | null;
+  next: DoubleNodeC | null;
 
-  constructor(value, prev = null, next = null) {
+  constructor(
+    value: number,
+    prev: DoubleNodeC | null = null,
+    next: DoubleNodeC | null = null
+  ) {
     this.value = value;
     this.next = next;
     this.prev = prev;
@@ -11,22 +15,25 @@ class DoubleNodeC {
 }
 
 class DoubleLinkedList {
-  head;
-  tail;
+  head: DoubleNodeC | null;
+  tail: DoubleNodeC | null;
 
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
-  append(value) {
+  append(value: number) {
     const newNode = new DoubleNodeC(value);
 
     if (!this.head) {
       this.head = newNode;
     } else {
       newNode.prev = this.tail;
-      this.tail.next = newNode;
+
+      if (this.tail) {
+        this.tail.next = newNode;
+      }
     }
 
     this.tail = newNode;
