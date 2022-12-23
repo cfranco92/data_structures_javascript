@@ -1,3 +1,4 @@
+// LIFO: Last In First Out
 class Stack {
   items: number[] = [];
 
